@@ -15,7 +15,7 @@ Clone, download the zip, or fork this project. In the project's directory:
 This a public project that I use to start my Angular 2 projects. This project has minimal Angular 2 code that displays 'Hello World' but also has the folowing features built in:
 
 - Uses [Rollup](https://github.com/rollup/rollup) to package everything
-- Packages 3rd party libraries seperately from application code
+- Packages 3rd party libraries seperately from application code. 3rd party libraries are packed into vendor.js and the app code is packed into app.js
 - Uses TypeScript as the authoring language but compiles everything down to ES5 browser compatible code
 - In development, app code changes automatically trigger compiles and packing. Changes are then pushed out to the application browser window
 - Uses TSLint to lint code on the fly as your developing
@@ -25,18 +25,18 @@ This a public project that I use to start my Angular 2 projects. This project ha
 
 ## Acknowlegements
 
-Much of the code is taken from the [Angular 2 Quickstart tutorial](https://angular.io/docs/ts/latest/quickstart.html) and the awesome [Angular 2 Bundling with Rollup tutorial](https://medium.com/@jonnysamps/angular-2-bundling-with-rollup-4738d0148a2c#.7fc9ox9r6) by Jonathon Samples
+Much of the code is taken from the [Angular 2 Quickstart tutorial](https://angular.io/docs/ts/latest/quickstart.html) and the awesome [Angular 2 Bundling with Rollup tutorial](https://medium.com/@jonnysamps/angular-2-bundling-with-rollup-4738d0148a2c#.7fc9ox9r6) by Jonathon Samples. I also found the [Rollup Quickstart Tutorial](https://github.com/rollup/rollup/wiki/Quickstart-Tutorial) very helpful.
 
 ## Worth Noting
 
-I chose Rollup as a packager because Webpack required a ton of configuration to just to get a simple Angular 2 app off the ground. Rollup semms to do a better job of packaging the code and eliminating unused blocks. Rollup was also a lot easier to understand and much simpler to configure. I also noticed that the [Ionic team is using it and seem to be really impressed with it](http://blog.ionic.io/announcing-the-ionic-2-release-candidate/)
+I chose Rollup as a packager because Webpack required a ton of configuration to just to get a simple Angular 2 app off the ground. Rollup seems to do a better job of packaging the code and eliminating unused blocks. Rollup was also a lot easier to understand and much simpler to configure. I also noticed that the [Ionic team is using it and seem to be really impressed with it](http://blog.ionic.io/announcing-the-ionic-2-release-candidate/)
 
 For linting I am using [TSlint](https://github.com/palantir/tslint) and the linting configuration found in the Angular 2 Quickstart [tutorial](https://angular.io/docs/ts/latest/quickstart.html). I would love to see a project like the Airbnb lint configuration that is maintained for TSLint but I have so far been unable to find one.
 
 ## Production builds
 
 My approach for production / release builds is that I always serve out of the dist directory. But it is in the .gitignore so it is never checked in. This is to prevent constant checkins of that folder during development.
-However, I do think it is important to checkin a production build so the resulting files for that are stored in the production folder and copied to the folder dist when doing a 'build-prod'. When running and deploying live in production, you will want to run prod.finalize.js to copy the production version of the files into dist/ .
+However, I do think it is important to checkin a production build so the resulting files are stored in the production folder and copied to the dist folder when doing a 'build-prod'. When running and deploying live in production, you will want to run prod.finalize.js to copy the production version of the bundled files into dist/ .
 
 ## Commands
 
