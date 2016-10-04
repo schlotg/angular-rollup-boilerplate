@@ -1,5 +1,15 @@
 # Angular 2 Rollup Boiler Plate
 
+## Installing
+
+Clone, download the zip, or fork this project. In the project's directory:
+
+  ```
+   npm install
+   npm run build-all
+   npm run dev
+  ```
+
 ## Why does the world need yet another Angular 2 boilerplate?
 
 This a public project that I use to start my Angular 2 projects. This project has minimal Angular 2 code that displays 'Hello World' but also has the folowing features built in:
