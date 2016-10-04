@@ -2,3 +2,5 @@ node_modules
 .git
 .vs
 .vscode
+dist
+*.log
