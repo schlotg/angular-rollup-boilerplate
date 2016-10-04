@@ -15,13 +15,13 @@ This a public project that I use to start my Angular 2 projects. This project ha
 
 ## Acknowlegements
 
-Much of the code is taken from the Angular 2 Quickstart [tutorial](https://angular.io/docs/ts/latest/quickstart.html) and the awesome Angular 2 [Bundling with Rollup](https://medium.com/@jonnysamps/angular-2-bundling-with-rollup-4738d0148a2c#.7fc9ox9r6) tutorial by Jonathon Samples
+Much of the code is taken from the [Angular 2 Quickstart tutorial](https://angular.io/docs/ts/latest/quickstart.html) and the awesome [Angular 2 Bundling with Rollup tutorial](https://medium.com/@jonnysamps/angular-2-bundling-with-rollup-4738d0148a2c#.7fc9ox9r6) by Jonathon Samples
 
 ## Worth Noting
 
 I chose Rollup as a packager because Webpack required a ton of configuration to just to get a simple Angular 2 app off the ground. Rollup semms to do a better job of packaging the code and eliminating unused blocks. Rollup was also a lot easier to understand and much simpler to configure. I also noticed that the [Ionic team is using it and seem to be really impressed with it](http://blog.ionic.io/announcing-the-ionic-2-release-candidate/)
 
-For linting I am using the linting configuration found in the Angular 2 Quickstart [tutorial](https://angular.io/docs/ts/latest/quickstart.html). I would love to see a project like the Airbnb lint configuration that is maintained for TSLint but I have so far been unable to find one.
+For linting I am using [TSlint](https://github.com/palantir/tslint) and the linting configuration found in the Angular 2 Quickstart [tutorial](https://angular.io/docs/ts/latest/quickstart.html). I would love to see a project like the Airbnb lint configuration that is maintained for TSLint but I have so far been unable to find one.
 
 ## Adding 3rd party modules
 
