@@ -26,12 +26,12 @@ For linting I am using [TSlint](https://github.com/palantir/tslint) and the lint
 ## Production builds
 
 My approach for production / release builds is that I always serve out of the dist directory. But it is in the .gitignore so it is never checked in. This is to prevent constant checkins of that folder during development.
-However, I do think it is important to checkin a production build so the resulting files for that are stored in the production folder and copied to the folder dist when doing a 'build-prod'. When running deploying this live in production you will want to prod.finalize.js to copy the production version of the files into dist/
+However, I do think it is important to checkin a production build so the resulting files for that are stored in the production folder and copied to the folder dist when doing a 'build-prod'. When running and deploying live in production, you will want to run prod.finalize.js to copy the production version of the files into dist/ .
 
 ## Commands
 
-There are many built in commands in pacakge.json/scripts. I am a big fan of using npm's built in task running functionality so I have avoided using Gulp or Grunt. Also, life is much simpler if you only use one package manager so all the packages are managed by npm.
-If your not familiar with using npm as a task runner. You can execute anyone of the commands in package.json/scripts by typing 'npm run <command>' .Here is a quick summary of the current commands:
+There are many built in commands in package.json:scripts. I am a big fan of using npm's built in task running functionality so I have avoided using Gulp or Grunt. Life is so much simpler if you only use one package manager, so all the packages are managed by npm.
+If your not familiar with using npm as a task runner. You can execute anyone of the commands in package.json:scripts by typing 'npm run <command>' . Here is a quick summary of the current commands:
 
 - test: Launch the testing framework (comming soon)
 - build-vendor: Builds the vendor bundle
