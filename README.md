@@ -1,4 +1,4 @@
-# Angular2 Rollup Boiler Plate
+# Angular 2 Rollup Boiler Plate
 
 ## Why does the world need yet another Angular 2 boilerplate?
 

@@ -1,5 +1,23 @@
 (function (_angular_platformBrowserDynamic, _angular_core, _angular_platformBrowser) {
     'use strict';
+    function __$styleInject(css, returnValue) {
+        if (typeof document === 'undefined') {
+            return returnValue;
+        }
+        css = css || '';
+        var head = document.head || document.getElementsByTagName('head')[0];
+        var style = document.createElement('style');
+        style.type = 'text/css';
+        if (style.styleSheet) {
+            style.styleSheet.cssText = css;
+        }
+        else {
+            style.appendChild(document.createTextNode(css));
+        }
+        head.appendChild(style);
+        return returnValue;
+    }
+    __$styleInject("", undefined);
     function __decorate(decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function")

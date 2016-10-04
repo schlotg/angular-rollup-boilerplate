@@ -2,6 +2,13 @@
 import alias from 'rollup-plugin-alias';
 import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
+import postcss from 'rollup-plugin-postcss';
+
+// PostCSS plugins
+import simplevars from 'postcss-simple-vars';
+import nested from 'postcss-nested';
+import cssnext from 'postcss-cssnext';
+import cssnano from 'cssnano';
 
 class RollupNG2 {
   constructor(options){
@@ -21,6 +28,15 @@ export default {
   format: 'iife',
   sourceMap: true,
   plugins: [
+    postcss({
+      plugins: [
+        simplevars(),
+        nested(),
+        cssnext({ warnForDuplicates: false, }),
+        cssnano(),
+      ],
+      extensions: [ '.css' ]
+    }),
     typescript(),
     rollupNG2(),
     alias({ rxjs: __dirname + '/node_modules/rxjs-es' }),
