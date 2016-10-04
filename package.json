@@ -2,7 +2,7 @@
   "name": "angular-rollup-boilerpplate",
   "version": "1.0.0",
   "description": "Simple boiler plate for Angular 2 and Rollup",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-vendor": "rollup -c rollup.config.vendor.js && tsc --out ./dist/vendor.js --target es5 --allowJs dist/vendor.es2015.js",
@@ -11,7 +11,7 @@
     "lint": "tslint ./app/**/*.ts -t verbose",
     "dev": "npm run lint && npm run build-app && concurrently \"onchange 'app/**/*.ts' -i -- npm run build-app\" \"lite-server\""
   },
-  "author": "Greg Schlottmann",
+  "author": "schlotg",
   "license": "ISC",
   "devDependencies": {
     "@angular/common": "^2.0.1",
