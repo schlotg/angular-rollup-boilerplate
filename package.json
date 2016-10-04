@@ -1,0 +1,42 @@
+{
+  "name": "angular-rollup-boilerpplate",
+  "version": "1.0.0",
+  "description": "Simple boiler plate for Angular 2 and Rollup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-vendor": "rollup -c rollup.config.vendor.js && tsc --out ./dist/vendor.js --target es5 --allowJs dist/vendor.es2015.js",
+    "build-app": "rollup -c rollup.config.js && tsc --out ./dist/bundle.js --target es5  --allowJs dist/bundle.es2015.js",
+    "build-all": "npm run build-vendor && npm run build-app",
+    "lint": "tslint ./app/**/*.ts -t verbose",
+    "dev": "npm run lint && npm run build-app && concurrently \"onchange 'app/**/*.ts' -i -- npm run build-app\" \"lite-server\""
+  },
+  "author": "Greg Schlottmann",
+  "license": "ISC",
+  "devDependencies": {
+    "@angular/common": "^2.0.1",
+    "@angular/compiler": "^2.0.1",
+    "@angular/core": "^2.0.1",
+    "@angular/forms": "^2.0.1",
+    "@angular/http": "^2.0.1",
+    "@angular/platform-browser": "^2.0.1",
+    "@angular/platform-browser-dynamic": "^2.0.1",
+    "@angular/router": "^3.0.1",
+    "core-js": "^2.4.1",
+    "lite-server": "^2.2.2",
+    "onchange": "^3.0.2",
+    "reflect-metadata": "^0.1.8",
+    "rollup": "^0.36.1",
+    "rollup-plugin-alias": "^1.2.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-typescript": "^0.8.1",
+    "rxjs": "^5.0.0-beta.12",
+    "rxjs-es": "^5.0.0-beta.12",
+    "tslint": "^3.15.1",
+    "typescript": "^2.0.3",
+    "zone.js": "^0.6.25"
+  },
+  "dependencies": {
+    "concurrently": "^3.1.0"
+  }
+}
