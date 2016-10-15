@@ -1,0 +1,7 @@
+{
+  "files": [
+    "dist/bundle.js",
+    "dist/vendor.js",
+    "index.html"
+  ]
+}
