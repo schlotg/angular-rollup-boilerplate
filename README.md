@@ -66,7 +66,12 @@ For a full featured website I generally drop in [Bootstrap](https://ng-bootstrap
 
 ### Adding Font Awesome
 
-...Coming Soon
+- npm install font-awesome --save-dev
+- add this to app/vendor.ts
+
+  `import '../node_modules/font-awesome/css/font-awesome.min.css';`
+
+- npm run build-vendor
 
 ### Adding other 3rd party libraries
 

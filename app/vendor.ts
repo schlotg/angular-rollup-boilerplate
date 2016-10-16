@@ -7,10 +7,10 @@ import * as _angular_platformBrowser from '@angular/platform-browser';
 import * as _angular_platformBrowserDynamic from '@angular/platform-browser-dynamic';
 import * as _angular_router from '@angular/router';
 import * as _angular_forms from '@angular/forms';
-import "core-js/client/shim.min.js";
-import "zone.js";
-import "reflect-metadata";
-import "rxjs/Rx";
+import 'core-js/client/shim.min.js';
+import 'zone.js';
+import 'reflect-metadata';
+import 'rxjs/Rx';
 
 export default {
   _angular_common,

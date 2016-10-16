@@ -2,16 +2,13 @@
 import alias from 'rollup-plugin-alias';
 import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
-import postcss from 'rollup-plugin-postcss';
-
-// PostCSS plugins
-import simplevars from 'postcss-simple-vars';
-import nested from 'postcss-nested';
-import cssnext from 'postcss-cssnext';
-import cssnano from 'cssnano';
+import css from 'rollup-plugin-css-only'
 import path from 'path';
 const home = path.join (__dirname, '../');
+import fs from 'fs';
 
+// copy index.html into the dist dir
+fs.createReadStream(`${home}/app/index.html`).pipe(fs.createWriteStream(`${home}/dist/index.html`));
 
 class RollupNG2 {
   constructor(options){
@@ -31,18 +28,10 @@ export default {
   format: 'iife',
   sourceMap: true,
   plugins: [
-    postcss({
-      plugins: [
-        simplevars(),
-        nested(),
-        cssnext({ warnForDuplicates: false, }),
-        cssnano(),
-      ],
-      extensions: [ '.css' ]
-    }),
     typescript(),
     rollupNG2(),
     alias({ rxjs: home + '/node_modules/rxjs-es' }),
+    css({ output: 'dist/bundle.css' }),
     resolve({ jsnext: true,
       main: true
     }

@@ -14,6 +14,7 @@ jetpack.find('prod', {
 
 // now copy the production files over
 const filesToCopy = [
+    { src: 'app/index.html', dest: 'dist/index.html' },
     { src: 'prod/bundle.js', dest: 'dist/bundle.js' },
     { src: 'prod/vendor.js', dest: 'dist/vendor.js' } /* ,
     { src: 'prod/bundle.js.map', dest: 'dist/bundle.js.map' } */
