@@ -1,4 +1,5 @@
 // vendor.ts
+import './styles/vendor.css';
 import * as _angular_common from '@angular/common';
 import * as _angular_compiler from '@angular/compiler';
 import * as _angular_core from '@angular/core';

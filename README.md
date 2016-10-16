@@ -1,4 +1,4 @@
-# Angular 2 Rollup Boiler Plate
+# Angular 2 Rollup Boilerplate
 
 ## Installing
 

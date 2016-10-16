@@ -16,8 +16,8 @@ jetpack.find('prod', {
 const filesToCopy = [
     { src: 'app/index.html', dest: 'dist/index.html' },
     { src: 'prod/bundle.js', dest: 'dist/bundle.js' },
-    { src: 'prod/vendor.js', dest: 'dist/vendor.js' } /* ,
-    { src: 'prod/bundle.js.map', dest: 'dist/bundle.js.map' } */
+    { src: 'prod/vendor.js', dest: 'dist/vendor.js' },
+    { src: 'prod/bundle.js.map', dest: 'dist/bundle.js.map' }
 ].forEach(function (file){
     jetpack.copy(file.src, file.dest, { overwrite: true });
 });
