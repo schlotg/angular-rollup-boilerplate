@@ -62,7 +62,18 @@ For a full featured website I generally drop in [Bootstrap](https://ng-bootstrap
 
 ### Adding Bootstrap
 
-...Coming Soon
+I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)
+
+- Install the CSS for Bootstrap: `npm install bootstrap --save-dev`
+- Add this package's CSS to the vendor.css. In app/vendor.ts: `import '../node_modules/bootstrap/dist/css/bootstrap.min.css';`
+- Install the Angular 2 bindings: `npm install @ng-bootstrap/ng-bootstrap --save-dev`
+- In app/app.module.ts add this line near the top of the file: `import {NgbModule} from '@ng-bootstrap/ng-bootstrap';`
+- In the imports array of @NgModule add this element: `NgbModule.forRoot()`
+- In app/vendor.ts add this line near the top: `import * as _ngb_module from '@ng-bootstrap/ng-bootstrap';`
+- In that same file this element to the default exports: `_ngb_module`
+- In configs/rollup.config.js, in the external array, add this element: `@ng-bootstrap/ng-bootstrap`
+- In that same file in the globals array add this element: `'@ng-bootstrap/ng-bootstrap': 'vendor._ngb_module'`
+- Finally, rebuild all your bundles by running: `npm run build-all`
 
 ### Adding Font Awesome
 
