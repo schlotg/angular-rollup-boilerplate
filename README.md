@@ -75,6 +75,8 @@ I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap
 - In that same file in the globals array add this element: `'@ng-bootstrap/ng-bootstrap': 'vendor._ngb_module'`
 - Finally, rebuild all your bundles by running: `npm run build-all`
 
+*** If you use the bootstrap-font-awesome branch it is already configured to work with Bootstrap and Font Awesome
+
 ### Adding Font Awesome
 
 - Install the Font Awesome library: `npm install font-awesome --save-dev`
@@ -91,6 +93,8 @@ I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap
 ```
 
 - Build and package all the assets: `npm run build-all`
+
+*** If you use the bootstrap-font-awesome branch it is already configured to work with Bootstrap and Font Awesome
 
 ### Adding other 3rd party libraries
 
