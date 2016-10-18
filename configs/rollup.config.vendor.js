@@ -4,7 +4,7 @@ import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
 import path from 'path';
 const home = path.join (__dirname, '../');
-import css from 'rollup-plugin-css-only'
+import css from 'rollup-plugin-css-only';
 
 class RollupNG2 {
   constructor(options){

@@ -5,10 +5,18 @@ import resolve from 'rollup-plugin-node-resolve';
 import css from 'rollup-plugin-css-only'
 import path from 'path';
 const home = path.join (__dirname, '../');
-import fs from 'fs';
+import jetpack from 'fs-jetpack';
+const packageJson = require('../package.json');
 
-// copy index.html into the dist dir
-fs.createReadStream(`${home}/app/index.html`).pipe(fs.createWriteStream(`${home}/dist/index.html`));
+// copy file list
+const files = packageJson.filesToCopy || [];
+files.forEach ((e) => {
+  if (jetpack.exists(path.dirname(`${home}${e.dest}`)) === false) {
+    console.log ('making directorty');
+    jetpack.dir(path.dirname(`${home}${e.dest}`));
+  }
+  jetpack.copy(`${home}${e.src}`, `${home}${e.dest}`, { overwrite: true });
+});
 
 class RollupNG2 {
   constructor(options){

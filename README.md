@@ -77,12 +77,20 @@ I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap
 
 ### Adding Font Awesome
 
-- npm install font-awesome --save-dev
-- add this to app/vendor.ts
+- Install the Font Awesome library: `npm install font-awesome --save-dev`
+- Make sure it gets packaged in vendor.css by add this to app/vendor.ts:
 
   `import '../node_modules/font-awesome/css/font-awesome.min.css';`
 
-- npm run build-vendor
+- Font awesome tries to load font files so make sure the are copied to the dist directory. Add this entry to package.json:
+```
+  {
+    src: 'node_modules/font-awesome/fonts',
+    dest: 'dist/fonts'
+  }
+```
+
+- Build and package all the assets: `npm run build-all`
 
 ### Adding other 3rd party libraries
 

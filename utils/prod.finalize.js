@@ -1,13 +1,7 @@
 const jetpack = require('fs-jetpack');
 
-// delete all the files in dist
-jetpack.find('dist', {
-    matching: '**'
-})
-.forEach(jetpack.remove);
-
 // cleanup unnecessary files
-jetpack.find('prod', {
+jetpack.find('dist', {
     matching: [ '*es2015*', '*min*']
 })
 .forEach(jetpack.remove);
