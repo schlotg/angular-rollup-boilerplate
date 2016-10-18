@@ -23,6 +23,10 @@
     {
       "src": "app/index.html",
       "dest": "dist/index.html"
+    },
+    {
+      "src": "node_modules/font-awesome/fonts",
+      "dest": "dist/fonts"
     }
   ],
   "devDependencies": {
@@ -34,7 +38,10 @@
     "@angular/platform-browser": "^2.0.1",
     "@angular/platform-browser-dynamic": "^2.0.1",
     "@angular/router": "^3.0.1",
+    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.8",
+    "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.6.3",
     "lite-server": "^2.2.2",
     "onchange": "^3.0.2",
     "reflect-metadata": "^0.1.8",

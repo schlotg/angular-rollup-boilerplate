@@ -1,5 +1,7 @@
 // vendor.ts
 import './styles/vendor.css';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
 import * as _angular_common from '@angular/common';
 import * as _angular_compiler from '@angular/compiler';
 import * as _angular_core from '@angular/core';
@@ -12,6 +14,7 @@ import 'core-js/client/shim.min.js';
 import 'zone.js';
 import 'reflect-metadata';
 import 'rxjs/Rx';
+import * as _ngb_module from '@ng-bootstrap/ng-bootstrap';
 
 export default {
   _angular_common,
@@ -21,5 +24,6 @@ export default {
   _angular_platformBrowser,
   _angular_platformBrowserDynamic,
   _angular_router,
-  _angular_forms
+  _angular_forms,
+  _ngb_module
 };
