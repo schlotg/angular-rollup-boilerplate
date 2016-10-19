@@ -2,7 +2,7 @@
 
 ## Installing
 
-First make sure you have Nodejs version 6.x.x or higher installed.
+First, make sure you have Node.js version 6.x.x or higher installed.
 
 Clone, download the zip, or fork this project. In the project's directory:
 
@@ -14,10 +14,10 @@ Clone, download the zip, or fork this project. In the project's directory:
 
 ## Why does the world need yet another Angular 2 boilerplate?
 
-This a public project that I use to start my Angular 2 projects. This project has minimal Angular 2 code that displays 'Hello World' but also has the folowing features built in:
+This a public project that I use to start my Angular 2 projects. This project has minimal Angular 2 code that displays 'Hello World' but also has the following features built in:
 
 - Uses [Rollup](https://github.com/rollup/rollup) to package everything
-- Packages 3rd party libraries seperately from application code. 3rd party libraries are packed into vendor.js and the app code is packed into app.js
+- Packages 3rd party libraries separately from application code. 3rd party libraries are packed into vendor.js and the app code is packed into app.js
 - Uses TypeScript as the authoring language but compiles everything down to ES5 browser compatible code
 - In development, app code changes automatically trigger compiles and packing. Changes are then pushed out to the application browser window
 - Uses TSLint to lint code on the fly as your developing
@@ -25,7 +25,7 @@ This a public project that I use to start my Angular 2 projects. This project ha
 - Integrated testing scripts and framework (coming soon)
 - Support for bundling CSS, images, and html
 
-## Acknowlegements
+## Acknowledgements
 
 Much of the code is taken from the [Angular 2 Quickstart tutorial](https://angular.io/docs/ts/latest/quickstart.html) and the awesome [Angular 2 Bundling with Rollup tutorial](https://medium.com/@jonnysamps/angular-2-bundling-with-rollup-4738d0148a2c#.7fc9ox9r6) by Jonathon Samples. I also found the [Rollup Quickstart Tutorial](https://github.com/rollup/rollup/wiki/Quickstart-Tutorial) very helpful.
 
@@ -45,7 +45,7 @@ However, I do think it is important to checkin a production build so the resulti
 There are many built in commands in package.json:scripts. I am a big fan of using npm's built in task running functionality so I have avoided using Gulp or Grunt. Life is so much simpler if you only use one package manager, so all the packages are managed by npm.
 If your not familiar with using npm as a task runner. You can execute anyone of the commands in package.json:scripts by typing 'npm run <command>' . Here is a quick summary of the current commands:
 
-- test: Launch the testing framework (comming soon)
+- test: Launch the testing framework (coming soon)
 - build-vendor: Builds the vendor bundle
 - build-prod-vendor: Builds the vendor bundle but also minifies it and stores the result in prod/
 - build-app: Builds the app bundle
@@ -111,7 +111,7 @@ you add assets by adding them as entries in the configs/app.config.json file. He
 - filesToCopy: This section specifies assets to copy into the dist directory. They can be single files or directories
 - vendorModules: This section specifies vendor modules. These are imported into the vendor bundle and exported so that the app bundle can use them
 - vendorBase: This section specifies files that need to be imported into the vendor bundle to make other vendor libraries work but don't need to be exported
-- vendorImports: This section specifies files that are bundled in but aren't libraies such as css files.
+- vendorImports: This section specifies files that are bundled in but aren't libraries such as css files.
 
 Adding ngBootstrap is a great example of adding 3rd party libraries to the project. It contains code, requires delcaring it as module, contains css, and contains font assets. Using it is an example, should allow you to integrate any other 3rd party library you might need.
 The only tricky part is figuring out the paths to some of the assets which is just a simple matter of opening up the NPM module's folder and looking at where the assets are installed.
@@ -124,7 +124,7 @@ In practice, I generally write my Angular components with all the CSS inlined to
 It ES6 back-tick strings allow you to do many of the things that JSX does for the React community.
 
 When importing images assets, the smaller images should be imported directly and inserted into the html like you would a variable. This helps minimize the number of files that your app needs to download when being served.
-However, converting the images into a base64 string, they take up more space. Therfore, for larger images like backgrounds, it is better to server them up individually. To do this:
+However, converting the images into a base64 string, they take up more space. Therefore, for larger images like backgrounds, it is better to server them up individually. To do this:
 
 - Add each image or folder to be served to the app/configs/app.config.json 'filesToCopy' section
 - Reference the image your html using the path relative to the 'dist' directory
@@ -141,4 +141,4 @@ override the configuration for production builds.
 
 Rollup has a Replace plugin that allows you to replace strings in your code with strings that you define in the Rollup config.
 This is currently being used in the ENV variable which gets set to "production" or "development" based on the type of build you used to create the bundles.
-This can be used in your code to enable or disabled things like loggers or console.log calls based on the environment.
+This can be used in your code to enable or disable things like loggers or console.log calls based on the environment.
