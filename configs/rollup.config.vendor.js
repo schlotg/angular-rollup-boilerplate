@@ -7,13 +7,17 @@ const home = path.join (__dirname, '../');
 import css from 'rollup-plugin-css-only';
 const appConfig = require('./app.config.json');
 import jetpack from 'fs-jetpack';
+
+// delete the dist directory (start clean)
+jetpack.remove('dist');
+jetpack.dir('dist');
+
+// generate the vendor.js file
 let generatedVendor = `
 // Warning, this file is procedurally generated during the vendor build process.
 // Please add assets by adding them to app.config.json
 `;
 let generatedVendorExports = `\nexport default {\n`;
-
-// generate the vendor.js file
 function toCamelCase(str) {
   return str.split('-').reduce((prev, cur, i) => {
     return (!i ? cur : prev + cur[0].toUpperCase() + cur.slice(1, cur.length));
@@ -35,6 +39,7 @@ appConfig.vendorBase.forEach(file => {
 generatedVendor += `${generatedVendorExports}}\n`;
 jetpack.write ('app/vendor.ts', generatedVendor);
 
+// configure rollup
 class RollupNG2 {
   constructor(options){
     this.options = options;
