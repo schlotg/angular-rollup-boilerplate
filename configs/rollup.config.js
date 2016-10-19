@@ -4,6 +4,8 @@ import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
 import css from 'rollup-plugin-css-only'
+import html from 'rollup-plugin-html';
+import image from 'rollup-plugin-image';
 import path from 'path';
 const home = path.join (__dirname, '../');
 import jetpack from 'fs-jetpack';
@@ -52,7 +54,9 @@ export default {
    replace({
     exclude: 'node_modules/**',
     'ENV': JSON.stringify('development')
-  }),
+   }),
+   image(),
+   html({ include: '**/*.html'})
  ],
 
  // This is how you exclude code from the bundle
