@@ -2,6 +2,8 @@
 
 ## Installing
 
+First make sure you have Nodejs version 6.x.x or higher installed.
+
 Clone, download the zip, or fork this project. In the project's directory:
 
   ```
