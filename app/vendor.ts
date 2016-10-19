@@ -1,3 +1,6 @@
+
+// Warning, this file is procedurally generated during the vendor build process.
+// Please add assets by adding them to app.config.json
 import './styles/vendor.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';

@@ -95,4 +95,13 @@ I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap
 
 ### Adding other 3rd party libraries
 
-...Coming Soon
+Most 3rd party libraries you will want to add to the vendor bundle. To make it easier to add libraries app/vendor.ts
+you add assets by adding them as entries in the app.config.json. Here are the different sections and what they do:
+
+- filesToCopy: This section specifies assets to copy into the dist directory. They can be single files or directories
+- vendorModules: This section specifies vendor modules. These are imported into the vendor bundle and exported so that the bundle can use them
+- vendorBase: This section specifies files that need to be imported into the vendor bundle to make other vendor libraries work but don't need to be exported
+- vendorImports: This section specifies files that are bundled in but aren't libraies such as css files.
+
+Adding ngBootstrap is a great example of adding 3rd party libraries to the project. It contains code, requires delcaring it as module, and contains css. Using it is an example, should allow you to integrate any other 3rd party library you might need.
+The only tricky part is figuring out the paths to some of the assets and that is just a simple matter of opening up the NPM module's folder and looking at where the assets are installed.
