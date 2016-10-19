@@ -1,3 +1,6 @@
+
+// Warning, this file is procedurally generated during the vendor build process.
+// Please add assets by adding them to app.config.json
 import './styles/vendor.css';
 import * as _angular_core from '@angular/core';
 import * as _angular_common from '@angular/common';

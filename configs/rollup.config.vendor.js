@@ -7,8 +7,11 @@ const home = path.join (__dirname, '../');
 import css from 'rollup-plugin-css-only';
 const appConfig = require('./app.config.json');
 import jetpack from 'fs-jetpack';
-let generatedVendor = '';
-let generatedVendorExports = '\nexport default {\n';
+let generatedVendor = `
+// Warning, this file is procedurally generated during the vendor build process.
+// Please add assets by adding them to app.config.json
+`;
+let generatedVendorExports = `\nexport default {\n`;
 
 // generate the vendor.js file
 function toCamelCase(str) {
