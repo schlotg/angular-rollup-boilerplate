@@ -65,14 +65,11 @@ For a full featured website I generally drop in [Bootstrap](https://ng-bootstrap
 I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)
 
 - Install the CSS for Bootstrap: `npm install bootstrap --save-dev`
-- Add this package's CSS to the vendor.css. In app/vendor.ts: `import '../node_modules/bootstrap/dist/css/bootstrap.min.css';`
+- Add this package's CSS to the vendor.css. In configs/app.config.json and this to the vendorImports array: `"../node_modules/bootstrap/dist/css/bootstrap.min.css"`
 - Install the Angular 2 bindings: `npm install @ng-bootstrap/ng-bootstrap --save-dev`
 - In app/app.module.ts add this line near the top of the file: `import {NgbModule} from '@ng-bootstrap/ng-bootstrap';`
 - In the imports array of @NgModule add this element: `NgbModule.forRoot()`
-- In app/vendor.ts add this line near the top: `import * as _ngb_module from '@ng-bootstrap/ng-bootstrap';`
-- In that same file this element to the default exports: `_ngb_module`
-- In configs/rollup.config.js, in the external array, add this element: `@ng-bootstrap/ng-bootstrap`
-- In that same file in the globals array add this element: `'@ng-bootstrap/ng-bootstrap': 'vendor._ngb_module'`
+- In configs/app.config.json add this line in the vendorModules array: `"@ng-bootstrap/ng-bootstrap";`
 - Finally, rebuild all your bundles by running: `npm run build-all`
 
 *** If you use the bootstrap-font-awesome branch it is already configured to work with Bootstrap and Font Awesome
@@ -80,11 +77,11 @@ I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap
 ### Adding Font Awesome
 
 - Install the Font Awesome library: `npm install font-awesome --save-dev`
-- Make sure it gets packaged in vendor.css by add this to app/vendor.ts:
+- Make sure it gets packaged in vendor.css by add this to configs/app.config.json in the vendorImports array:
 
-  `import '../node_modules/font-awesome/css/font-awesome.min.css';`
+  `"../node_modules/font-awesome/css/font-awesome.min.css"`
 
-- Font awesome tries to load font files so make sure the are copied to the dist directory. Add this entry to package.json:
+- Font awesome tries to load font files so make sure the are copied to the dist directory. Add this entry to configs/app.config.json filesToCopyArray:
 ```
   {
     src: 'node_modules/font-awesome/fonts',

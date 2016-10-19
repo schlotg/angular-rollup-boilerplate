@@ -2,14 +2,15 @@
 import alias from 'rollup-plugin-alias';
 import typescript from 'rollup-plugin-typescript';
 import resolve from 'rollup-plugin-node-resolve';
+import replace from 'rollup-plugin-replace';
 import css from 'rollup-plugin-css-only'
 import path from 'path';
 const home = path.join (__dirname, '../');
 import jetpack from 'fs-jetpack';
-const packageJson = require('../package.json');
+const appConfig = require('./app.config.json');
 
 // copy file list
-const files = packageJson.filesToCopy || [];
+const files = appConfig.filesToCopy || [];
 files.forEach ((e) => {
   if (jetpack.exists(path.dirname(`${home}${e.dest}`)) === false) {
     console.log ('making directorty');
@@ -18,17 +19,21 @@ files.forEach ((e) => {
   jetpack.copy(`${home}${e.src}`, `${home}${e.dest}`, { overwrite: true });
 });
 
-class RollupNG2 {
-  constructor(options){
-    this.options = options;
-  }
-  resolveId(id, from){
-    if(id.startsWith('rxjs/')){
-      return `${home}/node_modules/rxjs-es/${id.replace('rxjs/', '')}.js`;
-    }
-  }
+let external = [];
+let globals = {};
+
+function toCamelCase(str) {
+  return str.split('-').reduce((prev, cur, i) => {
+    return (!i ? cur : prev + cur[0].toUpperCase() + cur.slice(1, cur.length));
+  });
 }
-const rollupNG2 = (config) => new RollupNG2(config);
+
+const modules = appConfig.vendorModules || [];
+modules.forEach (module => {
+  external.push (module);
+  const name = module.replace('/', '_').replace('@','_');
+  globals[module] = `vendor.${toCamelCase(name)}`;
+});
 
 export default {
   entry: 'app/main.ts',
@@ -37,34 +42,24 @@ export default {
   sourceMap: true,
   plugins: [
     typescript(),
-    rollupNG2(),
     alias({ rxjs: home + '/node_modules/rxjs-es' }),
     css({ output: 'dist/bundle.css' }),
-    resolve({ jsnext: true,
+    resolve({
+      jsnext: true,
       main: true
     }
-   )
+   ),
+   replace({
+    exclude: 'node_modules/**',
+    'ENV': JSON.stringify('development')
+  }),
  ],
+
  // This is how you exclude code from the bundle
-  external: [
-    '@angular/core',
-    '@angular/common',
-    '@angular/compiler',
-    '@angular/http',
-    '@angular/platform-browser',
-    '@angular/platform-browser-dynamic',
-    '@angular/router',
-    '@angular/forms'
-  ],
+  external,
   // This is how you link the referenced module ids to the
   // global variables exposed by the vendor bundle.
-  globals: {
-    '@angular/core': 'vendor._angular_core',
-    '@angular/common': 'vendor._angular_common',
-    '@angular/compiler': 'vendor._angular_compiler',
-    '@angular/http': 'vendor._angular_http',
-    '@angular/platform-browser': 'vendor._angular_platformBrowser',
-    '@angular/platform-browser-dynamic': 'vendor._angular_platformBrowserDynamic',
-    '@angular/forms': 'vendor._angular_forms'
-  }
+  globals
 }
+
+
