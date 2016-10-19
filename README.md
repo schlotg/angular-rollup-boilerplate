@@ -21,7 +21,7 @@ This a public project that I use to start my Angular 2 projects. This project ha
 - Uses TSLint to lint code on the fly as your developing
 - Build scripts for production builds that minify the bundles
 - Integrated testing scripts and framework (coming soon)
-- Support for bundling CSS
+- Support for bundling CSS, images, and html
 
 ## Acknowlegements
 
@@ -65,14 +65,14 @@ For a full featured website I generally drop in [Bootstrap](https://ng-bootstrap
 I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)
 
 - Install the CSS for Bootstrap: `npm install bootstrap --save-dev`
-- Add this package's CSS to the vendor.css. In configs/app.config.json and this to the vendorImports array: `"../node_modules/bootstrap/dist/css/bootstrap.min.css"`
+- Add this package's CSS to the vendor bundle. In configs/app.config.json and this to the vendorImports array: `"../node_modules/bootstrap/dist/css/bootstrap.min.css"`
 - Install the Angular 2 bindings: `npm install @ng-bootstrap/ng-bootstrap --save-dev`
-- In app/app.module.ts add this line near the top of the file: `import {NgbModule} from '@ng-bootstrap/ng-bootstrap';`
-- In the imports array of @NgModule add this element: `NgbModule.forRoot()`
-- In configs/app.config.json add this line in the vendorModules array: `"@ng-bootstrap/ng-bootstrap";`
+- Add the module to the App: In app/app.module.ts add this line near the top of the file: `import {NgbModule} from '@ng-bootstrap/ng-bootstrap';`
+- Add the module to the App: In the imports array of @NgModule add this element: `NgbModule.forRoot()`
+- Add the module to the vendor bundle: In configs/app.config.json add this line in the vendorModules array: `"@ng-bootstrap/ng-bootstrap";`
 - Finally, rebuild all your bundles by running: `npm run build-all`
 
-I don't normally use the glyphicon font package that comes with bootstrap because I usually include Font Awesome. However if you want to use the Glyphicon fonts that come with ngBootstrap, include the following in configs/app.config.json in the filesToCopy section:
+I don't normally use the glyphicon font package that comes with ngBootstrap because I usually just use Font Awesome. However, if you want to use the Glyphicon fonts that come with ngBootstrap, include the following in configs/app.config.json in the filesToCopy section:
 ```
   {
     src: 'node_modules/font-awesome/fonts',
@@ -113,3 +113,30 @@ you add assets by adding them as entries in the app.config.json. Here are the di
 
 Adding ngBootstrap is a great example of adding 3rd party libraries to the project. It contains code, requires delcaring it as module, contains css, and contains font assets. Using it is an example, should allow you to integrate any other 3rd party library you might need.
 The only tricky part is figuring out the paths to some of the assets and that is just a simple matter of opening up the NPM module's folder and looking at where the assets are installed.
+
+### App Assets
+
+I have already installed the Rllup plugins for [css](https://github.com/thgh/rollup-plugin-css-only), [images](https://github.com/rollup/rollup-plugin-image), and [html](https://github.com/bdadam/rollup-plugin-html).
+These plugins allow you to import images, html, and css directly into the app bundles. I have already created a global css file for both vendor and app style in app/styles/. It is preferred that global CSS be added in those files.
+I generally write my Angular components with all the CSS inlined to the html, that is usually a string using the new ES6 back tick strings. This is just my preference as I like to minimize the files that need to be carried around per component.
+It also allows you to do many of the things JSX does for the React community.
+
+Regarding images assets, the smaller images should be imported directly and inserted into the html like you would a variable. This will help minimize the number of files that your app needs to download when being served.
+However, converting the images into a base64 string makes them bigger. For larger images, like backgrounds, it is better to server them up individually. To do this:
+
+- Add each image to be served to the app/configs/app.config.json filesToCopy section
+- reference the image your html using the path relative to the 'dist' directory
+
+Any other assets should be handled much like the fonts are in the 'Installing Font Awesome' steps above.
+
+### Adding Rollup Plugins
+
+Just follow the directions for each Rollup plugin. The file you want to make the changes in is configs/rollup.config.js.
+configs/rollup.config.prod.js is used when building for production and it first pulls in rollup.config.js and uses it as a base but then allows you to
+override the configuration for production builds.
+
+### Global Definitions
+
+Rollup has a Replace plugin that allows you to replace strings in your code with strings that you define in the Rollup config.
+This is currently being used in the ENV variable which gets set to "production" or "development" based on the type of build you used to create the bundles.
+This can be used in your code to enable or disabled things based on the environment.
