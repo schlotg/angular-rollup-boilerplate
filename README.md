@@ -105,8 +105,8 @@ I don't normally use the glyphicon font package that comes with ngBootstrap beca
 
 ### Adding other 3rd party libraries
 
-Most 3rd party libraries you will want to add to the vendor bundle. To make it easier to add libraries vendor bundle,
-you add assets by adding them as entries in the configs/app.config.json file. Here are the different sections and what they do:
+Most 3rd party libraries you will want to add to the vendor bundle. To make it easier to add libraries to the vendor bundle,
+add assets by adding them as entries in the configs/app.config.json file. Here are the different sections and what they do:
 
 - filesToCopy: This section specifies assets to copy into the dist directory. They can be single files or directories
 - vendorModules: This section specifies vendor modules. These are imported into the vendor bundle and exported so that the app bundle can use them
