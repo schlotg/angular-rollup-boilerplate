@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-vendor": "rollup -c configs/rollup.config.vendor.js && tsc --out ./dist/vendor.js --target es5 --allowJs dist/vendor.es2015.js",
     "build-prod-vendor": "rollup -c configs/rollup.config.prod.vendor.js && tsc --out ./prod/vendor.js --target es5 --allowJs prod/vendor.es2015.js && npm run minify-vendor",
-    "build-app": "rollup -c configs/rollup.config.js && tsc --out ./dist/bundle.js --target es5  --allowJs dist/bundle.es2015.js",
+    "build-app": "rollup -c configs/rollup.config.js && tsc --out ./dist/bundle.js --target es5  --allowJs dist/bundle.es2015.js && node utils/cleanup.js",
     "build-prod-app": "rollup -c configs/rollup.config.prod.js && tsc --out ./prod/bundle.js --target es5  --allowJs prod/bundle.es2015.js && npm run-minify-bundle",
     "build-all": "npm run build-vendor && npm run build-app",
     "build-prod": "npm run build-prod-vendor && npm run build-prod-app && node util/prod.finalize.js",
