@@ -14,7 +14,7 @@
     "minify-vendor": "uglifyjs --comments --compress --mangle --output prod/vendor.js -- prod/vendor.js",
     "minify-bundle": "uglifyjs --comments --compress --mangle --in-source-map prod/bundle.es2015.js.map --source-map prod/bundle.js.map --output prod/bundle.js -- prod/bundle.js",
     "lint": "tslint -c configs/tslint.json ./app/**/*.ts -t verbose",
-    "dev": "npm run lint && npm run build-app && node ./utils/build.vendor.js && concurrently \"onchange 'app/**/*.ts' -i -- npm run build-app\" \"lite-server -c configs/ls.config.json\"",
+    "dev": "npm run lint && npm run build-app && concurrently \"onchange 'app/**/*.ts' -i -- npm run build-app\" \"lite-server -c configs/ls.config.json\"",
     "serve": "lite-server -c configs/ls.config.json"
   },
   "author": "schlotg",
