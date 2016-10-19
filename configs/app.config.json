@@ -7,7 +7,12 @@
     {
       "src": "node_modules/font-awesome/fonts",
       "dest": "dist/fonts"
+    },
+    {
+      "src": "node_modules/bootstrap/fonts",
+      "dest": "dist/fonts"
     }
+
   ],
   "vendorModules": [
     "@angular/core",

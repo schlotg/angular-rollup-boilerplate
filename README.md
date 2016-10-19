@@ -72,6 +72,14 @@ I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap
 - In configs/app.config.json add this line in the vendorModules array: `"@ng-bootstrap/ng-bootstrap";`
 - Finally, rebuild all your bundles by running: `npm run build-all`
 
+I don't normally use the glyphicon font package that comes with bootstrap because I usually include Font Awesome. However if you want to use the Glyphicon fonts that come with ngBootstrap, include the following in configs/app.config.json in the filesToCopy section:
+```
+  {
+    src: 'node_modules/font-awesome/fonts',
+    dest: 'dist/fonts'
+  }
+```
+
 *** If you use the bootstrap-font-awesome branch it is already configured to work with Bootstrap and Font Awesome
 
 ### Adding Font Awesome
@@ -103,5 +111,5 @@ you add assets by adding them as entries in the app.config.json. Here are the di
 - vendorBase: This section specifies files that need to be imported into the vendor bundle to make other vendor libraries work but don't need to be exported
 - vendorImports: This section specifies files that are bundled in but aren't libraies such as css files.
 
-Adding ngBootstrap is a great example of adding 3rd party libraries to the project. It contains code, requires delcaring it as module, and contains css. Using it is an example, should allow you to integrate any other 3rd party library you might need.
+Adding ngBootstrap is a great example of adding 3rd party libraries to the project. It contains code, requires delcaring it as module, contains css, and contains font assets. Using it is an example, should allow you to integrate any other 3rd party library you might need.
 The only tricky part is figuring out the paths to some of the assets and that is just a simple matter of opening up the NPM module's folder and looking at where the assets are installed.
