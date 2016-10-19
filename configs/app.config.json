@@ -1,0 +1,27 @@
+{
+  "filesToCopy": [
+    {
+      "src": "app/index.html",
+      "dest": "dist/index.html"
+    }
+  ],
+  "vendorModules": [
+    "@angular/core",
+    "@angular/common",
+    "@angular/compiler",
+    "@angular/http",
+    "@angular/platform-browser",
+    "@angular/platform-browser-dynamic",
+    "@angular/router",
+    "@angular/forms"
+  ],
+  "vendorBase": [
+    "core-js/client/shim.min.js",
+    "zone.js",
+    "reflect-metadata",
+    "rxjs/Rx"
+  ],
+  "vendorImports": [
+    "./styles/vendor.css"
+  ]
+}

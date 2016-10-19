@@ -19,12 +19,6 @@
   },
   "author": "schlotg",
   "license": "ISC",
-  "filesToCopy": [
-    {
-      "src": "app/index.html",
-      "dest": "dist/index.html"
-    }
-  ],
   "devDependencies": {
     "@angular/common": "^2.0.1",
     "@angular/compiler": "^2.0.1",
