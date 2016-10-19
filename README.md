@@ -65,7 +65,7 @@ For a full featured website I generally drop in [Bootstrap](https://ng-bootstrap
 I am using this version of [Angular 2 Bootstrap](https://github.com/ng-bootstrap/ng-bootstrap)
 
 - Install the CSS for Bootstrap: `npm install bootstrap --save-dev`
-- Add this package's CSS to the vendor bundle. In configs/app.config.json and this to the vendorImports array: `"../node_modules/bootstrap/dist/css/bootstrap.min.css"`
+- Add this package's CSS to the vendor bundle: In configs/app.config.json and this to the vendorImports array: `"../node_modules/bootstrap/dist/css/bootstrap.min.css"`
 - Install the Angular 2 bindings: `npm install @ng-bootstrap/ng-bootstrap --save-dev`
 - Add the module to the App: In app/app.module.ts add this line near the top of the file: `import {NgbModule} from '@ng-bootstrap/ng-bootstrap';`
 - Add the module to the App: In the imports array of @NgModule add this element: `NgbModule.forRoot()`
@@ -103,40 +103,40 @@ I don't normally use the glyphicon font package that comes with ngBootstrap beca
 
 ### Adding other 3rd party libraries
 
-Most 3rd party libraries you will want to add to the vendor bundle. To make it easier to add libraries app/vendor.ts
-you add assets by adding them as entries in the app.config.json. Here are the different sections and what they do:
+Most 3rd party libraries you will want to add to the vendor bundle. To make it easier to add libraries vendor bundle,
+you add assets by adding them as entries in the configs/app.config.json file. Here are the different sections and what they do:
 
 - filesToCopy: This section specifies assets to copy into the dist directory. They can be single files or directories
-- vendorModules: This section specifies vendor modules. These are imported into the vendor bundle and exported so that the bundle can use them
+- vendorModules: This section specifies vendor modules. These are imported into the vendor bundle and exported so that the app bundle can use them
 - vendorBase: This section specifies files that need to be imported into the vendor bundle to make other vendor libraries work but don't need to be exported
 - vendorImports: This section specifies files that are bundled in but aren't libraies such as css files.
 
 Adding ngBootstrap is a great example of adding 3rd party libraries to the project. It contains code, requires delcaring it as module, contains css, and contains font assets. Using it is an example, should allow you to integrate any other 3rd party library you might need.
-The only tricky part is figuring out the paths to some of the assets and that is just a simple matter of opening up the NPM module's folder and looking at where the assets are installed.
+The only tricky part is figuring out the paths to some of the assets which is just a simple matter of opening up the NPM module's folder and looking at where the assets are installed.
 
 ### App Assets
 
-I have already installed the Rllup plugins for [css](https://github.com/thgh/rollup-plugin-css-only), [images](https://github.com/rollup/rollup-plugin-image), and [html](https://github.com/bdadam/rollup-plugin-html).
-These plugins allow you to import images, html, and css directly into the app bundles. I have already created a global css file for both vendor and app style in app/styles/. It is preferred that global CSS be added in those files.
-I generally write my Angular components with all the CSS inlined to the html, that is usually a string using the new ES6 back tick strings. This is just my preference as I like to minimize the files that need to be carried around per component.
-It also allows you to do many of the things JSX does for the React community.
+I have already installed the Rollup plugins for [css](https://github.com/thgh/rollup-plugin-css-only), [images](https://github.com/rollup/rollup-plugin-image), and [html](https://github.com/bdadam/rollup-plugin-html).
+These plugins allow you to import images, html, and css directly into the app bundles. I have created a global css file for both vendor and app styles in app/styles/. It is preferred that global CSS be added in those files.
+In practice, I generally write my Angular components with all the CSS inlined to the html. The html is usually a string, using the new ES6 back-tick strings, in the code. This is just my preference as I like to minimize the files that need to be carried around per component.
+It ES6 back-tick strings allow you to do many of the things that JSX does for the React community.
 
-Regarding images assets, the smaller images should be imported directly and inserted into the html like you would a variable. This will help minimize the number of files that your app needs to download when being served.
-However, converting the images into a base64 string makes them bigger. For larger images, like backgrounds, it is better to server them up individually. To do this:
+When importing images assets, the smaller images should be imported directly and inserted into the html like you would a variable. This helps minimize the number of files that your app needs to download when being served.
+However, converting the images into a base64 string, they take up more space. Therfore, for larger images like backgrounds, it is better to server them up individually. To do this:
 
-- Add each image to be served to the app/configs/app.config.json filesToCopy section
-- reference the image your html using the path relative to the 'dist' directory
+- Add each image or folder to be served to the app/configs/app.config.json 'filesToCopy' section
+- Reference the image your html using the path relative to the 'dist' directory
 
 Any other assets should be handled much like the fonts are in the 'Installing Font Awesome' steps above.
 
 ### Adding Rollup Plugins
 
-Just follow the directions for each Rollup plugin. The file you want to make the changes in is configs/rollup.config.js.
-configs/rollup.config.prod.js is used when building for production and it first pulls in rollup.config.js and uses it as a base but then allows you to
+Just follow the install directions for each Rollup plugin. The file you want to make the changes to is configs/rollup.config.js.
+The file configs/rollup.config.prod.js is used when building for production and it first pulls in the rollup.config.js file and uses it as a base. You can then
 override the configuration for production builds.
 
 ### Global Definitions
 
 Rollup has a Replace plugin that allows you to replace strings in your code with strings that you define in the Rollup config.
 This is currently being used in the ENV variable which gets set to "production" or "development" based on the type of build you used to create the bundles.
-This can be used in your code to enable or disabled things based on the environment.
+This can be used in your code to enable or disabled things like loggers or console.log calls based on the environment.
