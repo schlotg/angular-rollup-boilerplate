@@ -3,8 +3,9 @@ const jetpack = require('fs-jetpack');
 // cleanup unnecessary files
 jetpack.find('dist', {
     matching: [ '*es2015*']
-})
-.forEach(jetpack.remove);
+}).forEach(jetpack.remove);
+
+console.log('executed');
 
 // now copy the production files over
 const filesToCopy = [

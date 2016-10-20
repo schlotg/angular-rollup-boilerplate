@@ -7,10 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-vendor": "rollup -c configs/rollup.config.vendor.js && tsc --out ./dist/vendor.js --target es5 --allowJs dist/vendor.es2015.js",
     "build-prod-vendor": "rollup -c configs/rollup.config.prod.vendor.js && tsc --out ./prod/vendor.js --target es5 --allowJs prod/vendor.es2015.js && npm run minify-vendor",
-    "build-app": "rollup -c configs/rollup.config.js && tsc --out ./dist/bundle.js --target es5  --allowJs dist/bundle.es2015.js && node utils/cleanup.js",
+    "build-app": "rollup -c configs/rollup.config.js && tsc --out ./dist/bundle.js --target es5  --allowJs dist/bundle.es2015.js && ts-node utils/cleanup.ts",
     "build-prod-app": "rollup -c configs/rollup.config.prod.js && tsc --out ./prod/bundle.js --target es5  --allowJs prod/bundle.es2015.js && npm run-minify-bundle",
     "build-all": "npm run build-vendor && npm run build-app",
-    "build-prod": "npm run build-prod-vendor && npm run build-prod-app && node util/prod.finalize.js",
+    "build-prod": "npm run build-prod-vendor && npm run build-prod-app && ts-node util/prod.finalize.ts",
     "minify-vendor": "uglifyjs --comments --compress --mangle --output prod/vendor.js -- prod/vendor.js",
     "minify-bundle": "uglifyjs --comments --compress --mangle --in-source-map prod/bundle.es2015.js.map --source-map prod/bundle.js.map --output prod/bundle.js -- prod/bundle.js",
     "lint": "tslint -c configs/tslint.json ./app/**/*.ts -t verbose",
@@ -28,6 +28,7 @@
     "@angular/platform-browser": "^2.0.1",
     "@angular/platform-browser-dynamic": "^2.0.1",
     "@angular/router": "^3.0.1",
+    "@types/node": "^6.0.45",
     "core-js": "^2.4.1",
     "lite-server": "^2.2.2",
     "onchange": "^3.0.2",
@@ -48,7 +49,8 @@
   },
   "dependencies": {
     "concurrently": "^3.1.0",
-    "fs-jetpack": "^0.9.2"
+    "fs-jetpack": "^0.9.2",
+    "ts-node": "^1.6.0"
   },
   "engine": "node >= 6.0.0"
 }
