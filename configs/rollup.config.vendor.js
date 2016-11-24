@@ -57,6 +57,7 @@ export default {
   dest: 'dist/vendor.es2015.js',
   format: 'iife',
   moduleName: 'vendor',
+  sourceMap: 'inline',
   plugins: [
     typescript(),
     rollupNG2(),
