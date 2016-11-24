@@ -40,7 +40,7 @@ export default {
   entry: 'app/main.ts',
   dest: 'dist/bundle.es2015.js',
   format: 'iife',
-  sourceMap: true,
+  sourceMap: 'inline',
   plugins: [
     typescript(),
     alias({ rxjs: home + '/node_modules/rxjs-es' }),
